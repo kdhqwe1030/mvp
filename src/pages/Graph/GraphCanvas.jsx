@@ -3,17 +3,18 @@ import ForceGraph2D from 'react-force-graph-2d'
 import { forceCollide, forceX, forceY } from 'd3-force'
 import { LINK_STYLES, NODE_TYPES } from '../../data/graph'
 import { linkEndId, nodeRadius } from './graphUtils'
+import { ACCENT_200, INK, SLATE } from '../../theme'
 
 const TYPE_COLOR = Object.fromEntries(NODE_TYPES.map((t) => [t.key, t.color]))
 const NODE_STROKE = {
-  agent: ['#E2E8F0', 1.2],
-  data: ['#CBD5E1', 1],
-  dept: ['#F1F5F9', 0.8],
+  agent: ['#FFFFFF', 1.2],
+  data: [SLATE[300], 1],
+  dept: [SLATE[100], 0.8],
   platform: ['#FFFFFF', 0.6],
 }
-const LABEL_COLOR = { agent: '#0F172A', data: '#1E293B', dept: '#475569', platform: '#475569', doc: '#94A3B8' }
+const LABEL_COLOR = { agent: INK, data: SLATE[700], dept: SLATE[600], platform: SLATE[600], doc: SLATE[400] }
 const DIM_LINK = 'rgba(226, 232, 240, 0.35)'
-const FOCUS_LINK = 'rgba(15, 23, 42, 0.55)'
+const FOCUS_LINK = 'rgba(243, 115, 33, 0.7)'
 
 const clamp01 = (v) => Math.min(1, Math.max(0, v))
 
@@ -89,18 +90,18 @@ export default function GraphCanvas({
 
     if (node.id === selectedId) {
       ctx.beginPath()
-      ctx.arc(node.x, node.y, r + 2.2, 0, 2 * Math.PI)
-      ctx.strokeStyle = '#CBD5E1'
-      ctx.lineWidth = 1.6
+      ctx.arc(node.x, node.y, r + 2.4, 0, 2 * Math.PI)
+      ctx.strokeStyle = ACCENT_200
+      ctx.lineWidth = 2
       ctx.stroke()
     }
 
     ctx.beginPath()
     ctx.arc(node.x, node.y, r, 0, 2 * Math.PI)
     if (node.orphan) {
-      ctx.fillStyle = '#F8FAFC'
+      ctx.fillStyle = SLATE[100]
       ctx.fill()
-      ctx.strokeStyle = '#94A3B8'
+      ctx.strokeStyle = SLATE[400]
       ctx.lineWidth = 0.6
       ctx.stroke()
     } else {
@@ -138,7 +139,7 @@ export default function GraphCanvas({
       ctx.fillText(node.label, node.x, top)
       if (node.sub) {
         ctx.font = `3px 'JetBrains Mono', monospace`
-        ctx.fillStyle = isAgent ? '#64748B' : '#94A3B8'
+        ctx.fillStyle = isAgent ? SLATE[500] : SLATE[400]
         ctx.fillText(node.sub, node.x, top + fontSize + 0.6)
       }
     }

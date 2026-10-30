@@ -31,7 +31,7 @@ export default function FilterPanel({ dept, onDeptChange, tiers, onTierToggle, t
                 onClick={() => onDeptChange(d.key)}
               >
                 <span className="dept-item__name">
-                  {active && <span className="dot dot--dark" />}
+                  {active && <span className="dot dot--accent" />}
                   {d.name}
                 </span>
                 <span className="mono">{d.total}</span>

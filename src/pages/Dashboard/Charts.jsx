@@ -126,7 +126,7 @@ export function DuplicateClusters() {
               <div className="cluster__meta mono muted">{c.meta}</div>
             </div>
             <div className="cluster__right">
-              <span className="cluster__score mono">{c.similarity.toFixed(2)}</span>
+              <span className={`cluster__score mono${c.similarity >= 0.9 ? ' is-high' : ''}`}>{c.similarity.toFixed(2)}</span>
               <button className="mini-btn" aria-label={`${c.name} 상세`}>
                 <ChevronRight size={10} />
               </button>

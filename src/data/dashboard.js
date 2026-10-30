@@ -1,10 +1,11 @@
 // 대시보드 목업 데이터. 추후 API 응답으로 교체한다.
+import { ACCENT, ACCENT_300, SLATE } from '../theme'
 
 export const TIERS = [
-  { key: 'L4', label: 'L4 극비 · 고객 PII', color: '#0F172A' },
-  { key: 'L3', label: 'L3 대외비 · 재무/계약', color: '#334155' },
-  { key: 'L2', label: 'L2 사내 한정', color: '#94A3B8' },
-  { key: 'L1', label: 'L1 공개 · 비식별 데이터', color: '#E2E8F0' },
+  { key: 'L4', label: 'L4 극비 · 고객 PII', color: ACCENT },
+  { key: 'L3', label: 'L3 대외비 · 재무/계약', color: SLATE[600] },
+  { key: 'L2', label: 'L2 사내 한정', color: SLATE[400] },
+  { key: 'L1', label: 'L1 공개 · 비식별 데이터', color: SLATE[200] },
 ]
 
 export const DEPARTMENTS = [
@@ -22,10 +23,10 @@ export const TOTAL_AGENTS = DEPARTMENTS.reduce((sum, d) => sum + deptTotal(d), 0
 export const tierTotal = (tierKey) => DEPARTMENTS.reduce((sum, d) => sum + d.tiers[tierKey], 0)
 
 export const LLM_SHARE = [
-  { name: 'Azure OpenAI', value: 42, color: '#0F172A' },
-  { name: 'Claude (VPC)', value: 24, color: '#475569' },
-  { name: '사내 SLM', value: 20, color: '#94A3B8' },
-  { name: '오픈소스 기타', value: 14, color: '#CBD5E1' },
+  { name: 'Azure OpenAI', value: 42, color: ACCENT },
+  { name: 'Claude (VPC)', value: 24, color: ACCENT_300 },
+  { name: '사내 SLM', value: 20, color: SLATE[500] },
+  { name: '오픈소스 기타', value: 14, color: SLATE[300] },
 ]
 
 export const CLUSTERS = [

@@ -1,7 +1,8 @@
 import { ChevronDown, ChevronLeft, ChevronRight, Eye, Search, TableProperties } from 'lucide-react'
 import { TOTAL_AGENTS } from '../../data/dashboard'
+import { ACCENT, ACCENT_300, SLATE } from '../../theme'
 
-const DUP_DOT = { high: '#0F172A', mid: '#64748B', none: '#94A3B8' }
+const DUP_DOT = { high: ACCENT, mid: ACCENT_300, none: SLATE[300] }
 
 const COLUMNS = ['Agent / 식별자', '부서', '업무 성격', '모델 / 스택', '데이터 등급', '중복 상태', '관리']
 

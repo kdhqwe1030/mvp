@@ -1,11 +1,12 @@
 // 지식 그래프 목업 데이터. 추후 API(Agent 레지스트리 + 데이터 카탈로그) 응답으로 교체한다.
+import { ACCENT, SLATE } from '../theme'
 
 export const NODE_TYPES = [
-  { key: 'agent', label: 'AI Agent', color: '#0F172A' },
-  { key: 'data', label: '데이터 소스', color: '#475569' },
-  { key: 'dept', label: '부서', color: '#64748B' },
-  { key: 'platform', label: '플랫폼 / LLM', color: '#94A3B8' },
-  { key: 'doc', label: '문서 · 프롬프트', color: '#CBD5E1' },
+  { key: 'agent', label: 'AI Agent', color: ACCENT },
+  { key: 'data', label: '데이터 소스', color: SLATE[700] },
+  { key: 'dept', label: '부서', color: SLATE[500] },
+  { key: 'platform', label: '플랫폼 / LLM', color: SLATE[400] },
+  { key: 'doc', label: '문서 · 프롬프트', color: SLATE[300] },
 ]
 
 export const GRAPH_DEPTS = [
@@ -17,11 +18,11 @@ export const GRAPH_DEPTS = [
 
 // 링크 유형별 스타일
 export const LINK_STYLES = {
-  uses: { color: '#94A3B8', width: 1, dash: null }, // Agent → 데이터
-  runs_on: { color: '#CBD5E1', width: 0.8, dash: null }, // Agent → 플랫폼
-  owned_by: { color: '#CBD5E1', width: 0.8, dash: [2, 2] }, // Agent → 부서
-  ref: { color: '#E2E8F0', width: 0.6, dash: null }, // 노드 → 문서
-  duplicate: { color: '#64748B', width: 1.2, dash: [3, 2] }, // Agent ↔ Agent 중복 의심
+  uses: { color: SLATE[400], width: 1, dash: null }, // Agent → 데이터
+  runs_on: { color: SLATE[300], width: 0.8, dash: null }, // Agent → 플랫폼
+  owned_by: { color: SLATE[300], width: 0.8, dash: [2, 2] }, // Agent → 부서
+  ref: { color: SLATE[200], width: 0.6, dash: null }, // 노드 → 문서
+  duplicate: { color: ACCENT, width: 1.2, dash: [3, 2] }, // Agent ↔ Agent 중복 의심
 }
 
 export const EXTERNAL_PLATFORMS = ['p-azure', 'p-claude']

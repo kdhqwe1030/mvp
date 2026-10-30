@@ -43,7 +43,7 @@ export default function KpiCards() {
               <div className="kpi__label mono upper">{label}</div>
               <div className="kpi__value">
                 <span className="mono">{value}</span>
-                {trend && <TrendingUp size={11} className="muted" />}
+                {trend && <TrendingUp size={12} className="kpi__trend" />}
                 {unit && <span className="kpi__unit muted">{unit}</span>}
               </div>
             </div>
@@ -52,7 +52,7 @@ export default function KpiCards() {
             </span>
           </div>
           <div className="kpi__foot">
-            {dot && <span className="dot dot--dark" />}
+            {dot && <span className="dot dot--accent" />}
             {foot.map((f) => (
               <span key={f.text} className={`${f.strong ? 'kpi__foot-strong' : 'muted'}${f.mono ? ' mono' : ''}`}>
                 {f.text}

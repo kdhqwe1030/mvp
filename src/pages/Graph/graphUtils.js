@@ -1,4 +1,5 @@
 import { EXTERNAL_PLATFORMS } from '../../data/graph'
+import { ACCENT, SLATE } from '../../theme'
 
 const BASE_RADIUS = { agent: 6, data: 4.5, dept: 4, platform: 3.5, doc: 2.5 }
 
@@ -79,9 +80,9 @@ export function filterGraph(master, byId, { types, dept, minTier, showOrphans, d
 }
 
 export const PRESETS = [
-  { key: 'duplicate', label: '중복 의심 Agent 쌍', color: '#0F172A' },
-  { key: 'pii', label: 'L4 민감 데이터 접근 경로', color: '#475569' },
-  { key: 'external', label: '외부 LLM 의존 Agent', color: '#CBD5E1' },
+  { key: 'duplicate', label: '중복 의심 Agent 쌍', color: ACCENT },
+  { key: 'pii', label: 'L4 민감 데이터 접근 경로', color: SLATE[700] },
+  { key: 'external', label: '외부 LLM 의존 Agent', color: SLATE[400] },
 ]
 
 export function presetNodes(key, graph, byId) {

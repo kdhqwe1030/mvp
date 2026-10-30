@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useRef, useState } from 'react'
 import { Crosshair, List, PanelLeftOpen, SlidersHorizontal, Waypoints } from 'lucide-react'
 import { NODE_TYPES, createGraphData } from '../../data/graph'
+import { ACCENT, SLATE } from '../../theme'
 import GraphCanvas from './GraphCanvas'
 import ExplorerPanel from './ExplorerPanel'
 import GraphSettings from './GraphSettings'
@@ -153,7 +154,7 @@ export default function GraphPage() {
 
         <div className="g-topbar">
           <div className="g-focus">
-            <span className="g-dot g-dot--lg" style={{ background: selectedNode ? '#0F172A' : '#CBD5E1' }} />
+            <span className="g-dot g-dot--lg" style={{ background: selectedNode ? ACCENT : SLATE[300] }} />
             <span className="g-focus__text">
               {selectedNode ? (
                 <>

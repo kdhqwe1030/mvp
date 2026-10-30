@@ -1,0 +1,449 @@
+/* ---------- 페이지: 시안 바 + 캔버스 ---------- */
+
+.gs-page {
+  flex-direction: column;
+}
+
+.gs-proposal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 8px 16px;
+  background: var(--slate-50);
+  border-bottom: 1px solid var(--border);
+  z-index: 3;
+}
+.gs-proposal__title {
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--slate-500);
+}
+.gs-proposal__note {
+  flex: 1;
+  min-width: 240px;
+  font-size: 11px;
+}
+
+.gs-switch {
+  display: flex;
+  padding: 2px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.gs-switch button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--slate-500);
+  border-radius: var(--radius);
+  white-space: nowrap;
+}
+.gs-switch button:hover {
+  color: var(--slate-900);
+}
+.gs-switch button.is-active {
+  font-weight: 500;
+  color: #fff;
+  background: var(--slate-900);
+}
+.gs-switch__rec {
+  padding: 0 4px;
+  font-size: 9px;
+  line-height: 14px;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+.gs-page .g-stage {
+  flex: 1;
+  min-height: 0;
+}
+
+.gs-settings-fab {
+  top: 12px;
+}
+.gs-page .g-settings {
+  top: 12px;
+  max-height: calc(100% - 90px);
+}
+/* B안에서 설정을 열면 검색 패널 왼쪽에 붙인다 */
+.gs-settings-shift .g-settings {
+  right: 344px;
+}
+
+/* ---------- 검색창 ---------- */
+
+.llm-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 0 4px 0 10px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.llm-box:focus-within {
+  border-color: var(--accent-300);
+  box-shadow: 0 0 0 3px var(--accent-50);
+}
+.llm-box__icon {
+  flex: none;
+  color: var(--accent);
+}
+.llm-box input {
+  flex: 1;
+  min-width: 0;
+  height: 36px;
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+.llm-box input::placeholder {
+  color: var(--slate-400);
+}
+.llm-box__clear {
+  display: inline-flex;
+  padding: 4px;
+  color: var(--slate-400);
+  border-radius: var(--radius);
+}
+.llm-box__clear:hover {
+  color: var(--slate-700);
+}
+.llm-box__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 6px;
+}
+.llm-box__submit:disabled {
+  color: var(--slate-400);
+  background: var(--slate-100);
+  cursor: default;
+}
+
+.llm-box--header input {
+  height: 30px;
+}
+.llm-box--header .llm-box__submit {
+  width: 24px;
+  height: 24px;
+}
+.llm-box--compact {
+  padding-left: 8px;
+  border-radius: var(--radius);
+}
+.llm-box--compact input {
+  height: 28px;
+  font-size: 11px;
+}
+.llm-box--compact .llm-box__submit {
+  width: 22px;
+  height: 22px;
+}
+.llm-box--command {
+  box-shadow: 0 8px 24px -8px rgba(15, 23, 42, 0.18);
+}
+.llm-box--command input {
+  height: 40px;
+  font-size: 13px;
+}
+
+.llm-spin {
+  animation: llm-spin 0.9s linear infinite;
+}
+@keyframes llm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.llm-examples {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+.llm-examples .mono {
+  margin-right: 2px;
+  font-size: 10px;
+}
+.llm-chip {
+  padding: 2px 8px;
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--slate-600);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+}
+.llm-chip:hover {
+  color: var(--accent-ink);
+  border-color: var(--accent-200);
+  background: var(--accent-50);
+}
+
+/* ---------- 결과 ---------- */
+
+.llm-state {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  color: var(--slate-500);
+}
+.llm-results {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
+.llm-intent {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+.llm-intent .mono {
+  font-size: 10px;
+}
+.llm-intent__chip {
+  padding: 1px 6px;
+  font-size: 10px;
+  line-height: 15px;
+  color: var(--accent-ink);
+  background: var(--accent-50);
+  border: 1px solid var(--accent-200);
+  border-radius: var(--radius);
+}
+.llm-results__count {
+  font-size: 10px;
+}
+.llm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.llm-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  padding: 8px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+}
+.llm-item:hover {
+  border-color: var(--slate-300);
+}
+.llm-item.is-selected {
+  border-color: var(--accent-300);
+  background: var(--accent-50);
+}
+.llm-item__rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  color: var(--slate-600);
+  background: var(--slate-100);
+  border-radius: 9999px;
+}
+.llm-item.is-selected .llm-item__rank {
+  color: #fff;
+  background: var(--accent);
+}
+.llm-item__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.llm-item__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 6px;
+}
+.llm-item__head strong {
+  font-weight: 500;
+}
+.llm-item__head .mono {
+  font-size: 10px;
+}
+.llm-item__bar {
+  display: block;
+  height: 3px;
+  background: var(--slate-100);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.llm-item__bar span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+.llm-item__reasons {
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--slate-500);
+}
+.llm-item__pct {
+  flex: none;
+  font-size: 10px;
+  color: var(--slate-500);
+}
+.llm-results--compact .llm-item {
+  padding: 6px;
+}
+.llm-note {
+  margin-top: 2px;
+  font-size: 9px;
+  line-height: 14px;
+  color: var(--slate-400);
+}
+
+/* ---------- A안: 헤더 ---------- */
+
+.llm-header {
+  position: relative;
+  flex: 1;
+  min-width: 140px;
+}
+.llm-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  max-height: min(70vh, 560px);
+  overflow-y: auto;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 32px -12px rgba(15, 23, 42, 0.25);
+}
+
+/* ---------- B안: 오른쪽 패널 ---------- */
+
+.gs-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  font-weight: 600;
+  background: rgba(248, 250, 252, 0.6);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.gs-panel-head > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.gs-panel-head svg {
+  flex: none;
+  color: var(--accent);
+}
+
+.gs-right-panel,
+.gs-results-overlay {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+}
+.gs-right-panel {
+  top: 56px;
+  right: 12px;
+  bottom: 16px;
+}
+.gs-right-panel__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  overflow-y: auto;
+}
+
+/* ---------- C안: 필터 섹션 ---------- */
+
+.gs-filter-search {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ---------- D안: 캔버스 상단 커맨드 바 + 왼쪽 결과 ---------- */
+
+.gs-command {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(520px, calc(100% - 340px));
+  transform: translateX(-50%);
+}
+.gs-command .llm-examples {
+  justify-content: center;
+}
+
+.gs-results-overlay {
+  top: 12px;
+  left: 16px;
+  bottom: 16px;
+}
+.gs-results-overlay .llm-results {
+  padding: 12px;
+  overflow-y: auto;
+}
+
+@media (max-width: 1100px) {
+  .gs-command {
+    left: 16px;
+    width: calc(100% - 160px);
+    transform: none;
+  }
+  .gs-page--canvas .gs-results-overlay {
+    top: 112px;
+  }
+}

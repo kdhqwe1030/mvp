@@ -1,4 +1,4 @@
-import { Check, FileUp, Filter, Info, RotateCcw, Sparkles } from 'lucide-react'
+import { Check, Filter, Info, RotateCcw } from 'lucide-react'
 import { DEPARTMENTS, TIERS, TOTAL_AGENTS, deptTotal, tierTotal } from '../../data/dashboard'
 
 export default function FilterPanel({ dept, onDeptChange, tiers, onTierToggle, threshold, onThresholdChange, onReset }) {
@@ -43,7 +43,9 @@ export default function FilterPanel({ dept, onDeptChange, tiers, onTierToggle, t
 
       <section className="filter-group filter-group--bordered">
         <div className="filter-group__label-row">
-          <span className="filter-group__label mono upper">데이터 민감도</span>
+          <span className="filter-group__label mono upper">
+            데이터 민감도 <span className="ext-tag">확장</span>
+          </span>
           <span className="mono filter-group__value">
             {tiers.length}/{TIERS.length} 선택
           </span>
@@ -69,7 +71,9 @@ export default function FilterPanel({ dept, onDeptChange, tiers, onTierToggle, t
 
       <section className="filter-group filter-group--bordered">
         <div className="filter-group__label-row">
-          <span className="filter-group__label mono upper">중복 유사도 임계값</span>
+          <span className="filter-group__label mono upper">
+            중복 유사도 임계값 <span className="ext-tag">확장</span>
+          </span>
           <span className="mono filter-group__strong">{threshold.toFixed(2)}</span>
         </div>
         <div className="range">
@@ -95,19 +99,6 @@ export default function FilterPanel({ dept, onDeptChange, tiers, onTierToggle, t
         </div>
       </section>
 
-      <section className="ai-extract">
-        <div className="ai-extract__title">
-          <Sparkles size={13} />
-          AI 빠른 추출
-        </div>
-        <p className="ai-extract__desc">
-          기획서·명세서를 올리면 모델, 데이터 등급, 담당 조직 등 Agent 메타데이터를 자동으로 추출합니다.
-        </p>
-        <button className="dropzone">
-          <FileUp size={14} />
-          <span className="mono">PDF / DOCX 드래그 앤 드롭</span>
-        </button>
-      </section>
     </aside>
   )
 }

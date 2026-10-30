@@ -1,6 +1,7 @@
 /* ---------- 레이아웃 ---------- */
 
 .g-page {
+  position: relative; /* 탐색기 다시 열기 버튼(.g-explorer-tab)의 기준 */
   display: flex;
   height: calc(100vh - 57px);
   overflow: hidden;

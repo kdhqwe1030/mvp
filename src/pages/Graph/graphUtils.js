@@ -1,6 +1,22 @@
 import { EXTERNAL_PLATFORMS } from '../../data/graph'
 import { ACCENT, SLATE } from '../../theme'
 
+export const DEFAULT_SETTINGS = {
+  search: '',
+  dupOnly: false,
+  hideDeptLinks: false,
+  hideDocLinks: false,
+  showOrphans: true,
+  arrows: false,
+  textFade: 1.2,
+  nodeSize: 1,
+  linkWidth: 1,
+  center: 0.08,
+  repel: 90,
+  linkForce: 0.6,
+  linkDistance: 32,
+}
+
 const BASE_RADIUS = { agent: 6, data: 4.5, dept: 4, platform: 3.5, doc: 2.5 }
 
 export const nodeRadius = (node, scale = 1) => BASE_RADIUS[node.type] * scale

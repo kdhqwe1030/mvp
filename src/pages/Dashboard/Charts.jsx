@@ -1,12 +1,13 @@
 import { ChartBar, ChartPie, ChevronRight, Combine } from 'lucide-react'
 import { CLUSTERS, DEPARTMENTS, LLM_SHARE, TIERS, deptTotal } from '../../data/dashboard'
 
-function ChartHeader({ icon: Icon, title, aside }) {
+function ChartHeader({ icon: Icon, title, tag, aside }) {
   return (
     <div className="chart__head">
       <span className="chart__title">
         <Icon size={12} />
         {title}
+        {tag && <span className="ext-tag">{tag}</span>}
       </span>
       {aside}
     </div>
@@ -67,7 +68,7 @@ export function LlmDonutChart() {
 
   return (
     <div className="card chart">
-      <ChartHeader icon={ChartPie} title="플랫폼 & LLM 의존도" aside={<span className="mono muted">N=142</span>} />
+      <ChartHeader icon={ChartPie} title="플랫폼 & LLM 의존도" tag="확장" aside={<span className="mono muted">N=142</span>} />
       <div className="donut-wrap">
         <div className="donut">
           <svg viewBox="0 0 96 96">

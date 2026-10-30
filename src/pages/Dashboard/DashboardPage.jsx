@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Calendar, Download, LayoutDashboard, Link2, Network, Plus } from 'lucide-react'
+import { Calendar, Download, Plus } from 'lucide-react'
 import { AGENTS, TIERS } from '../../data/dashboard'
 import FilterPanel from './FilterPanel'
 import KpiCards from './KpiCards'
@@ -40,24 +40,13 @@ export default function DashboardPage({ onNavigate }) {
   return (
     <div className="page">
       <div className="context-bar">
-        <div className="mode-switch">
-          <button onClick={() => onNavigate('graph')}>
-            <Network size={12} />
-            지식 그래프 뷰
-          </button>
-          <button className="is-active">
-            <LayoutDashboard size={11} />
-            Executive 대시보드
-            <span className="mode-switch__badge mono">Live</span>
-          </button>
-        </div>
         <div className="context-bar__right">
           <span className="context-chip mono">기간 2026-07-01 ~ 09-30</span>
           <button className="outline-btn mono">
             <Calendar size={11} />
             Q3 2026 분기 리포트
           </button>
-          <button className="primary-btn">
+          <button className="primary-btn" onClick={() => onNavigate('register')}>
             <Plus size={9} strokeWidth={3} />
             신규 Agent 등록
           </button>
@@ -92,10 +81,7 @@ export default function DashboardPage({ onNavigate }) {
               <button className="outline-btn">
                 <Download size={10} />
                 보고서 내보내기
-              </button>
-              <button className="outline-btn">
-                <Link2 size={10} />
-                공유 링크 복사
+                <span className="ext-tag">확장</span>
               </button>
             </div>
           </section>

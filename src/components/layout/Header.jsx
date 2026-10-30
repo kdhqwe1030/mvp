@@ -1,54 +1,30 @@
-import { Bell, Layers, Search, Settings } from 'lucide-react'
+import { useCallback, useState } from 'react'
+import { Bell, Search, Settings } from 'lucide-react'
+import { SAMPLE_NOTIFICATIONS } from '../../data/notifications'
+import NotificationModal from './NotificationModal'
 
-const HEADER_STATS = [
-  { label: 'Active Agents', value: '142' },
-  { label: '월 호출 수', value: '1.28M' },
-  { label: 'SLA', value: '99.9%' },
-]
+// search: 이 화면 전용 검색 UI 로 기본 검색창을 대체할 때 넘긴다 (지식 그래프 + 검색 A안)
+export default function Header({ search }) {
+  const [notiOpen, setNotiOpen] = useState(false)
+  const [notifications, setNotifications] = useState(SAMPLE_NOTIFICATIONS)
+  const hasUnread = notifications.some((n) => n.unread)
+  const closeNoti = useCallback(() => setNotiOpen(false), [])
 
-export default function Header() {
   return (
     <header className="header">
-      <div className="header__left">
-        <div className="header__title">
-          <span className="header__title-icon">
-            <Layers size={16} />
-          </span>
-          <div>
-            <div className="header__name">AI Agent Hub</div>
-            <div className="mono muted upper header__sub">Governance Console</div>
-          </div>
-        </div>
-        <span className="vdivider" />
-        <span className="status-pill mono">
-          <span className="dot dot--green" />
-          All systems OK
-        </span>
-      </div>
-
-      <label className="search header__search">
-        <Search size={12} className="search__icon" />
-        <input placeholder="Agent, 부서, 모델 검색..." />
-        <kbd className="mono">⌘K</kbd>
-      </label>
+      {search ?? (
+        <label className="search header__search">
+          <Search size={12} className="search__icon" />
+          <input placeholder="Agent, 부서, 모델 검색..." />
+          <kbd className="mono">⌘K</kbd>
+        </label>
+      )}
 
       <div className="header__right">
-        <div className="header__stats">
-          {HEADER_STATS.map((s, i) => (
-            <div key={s.label} className="header__stat-wrap">
-              {i > 0 && <span className="vdivider" />}
-              <div className="header__stat">
-                <span className="mono muted upper">{s.label}</span>
-                <strong className="mono">{s.value}</strong>
-              </div>
-            </div>
-          ))}
-        </div>
-
         <div className="header__actions">
-          <button className="icon-btn" aria-label="알림">
+          <button className="icon-btn" aria-label="알림" aria-haspopup="dialog" onClick={() => setNotiOpen(true)}>
             <Bell size={14} />
-            <span className="icon-btn__badge" />
+            {hasUnread && <span className="icon-btn__badge" />}
           </button>
           <button className="icon-btn" aria-label="설정">
             <Settings size={14} />
@@ -65,6 +41,14 @@ export default function Header() {
           <span className="avatar mono">AG</span>
         </div>
       </div>
+
+      {notiOpen && (
+        <NotificationModal
+          items={notifications}
+          onClose={closeNoti}
+          onReadAll={() => setNotifications((prev) => prev.map((n) => ({ ...n, unread: false })))}
+        />
+      )}
     </header>
   )
 }

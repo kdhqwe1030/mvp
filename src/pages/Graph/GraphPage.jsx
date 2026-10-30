@@ -5,26 +5,10 @@ import { ACCENT, SLATE } from '../../theme'
 import GraphCanvas from './GraphCanvas'
 import ExplorerPanel from './ExplorerPanel'
 import GraphSettings from './GraphSettings'
-import { PRESETS, buildNeighbors, filterGraph, presetNodes } from './graphUtils'
+import { DEFAULT_SETTINGS, PRESETS, buildNeighbors, filterGraph, presetNodes } from './graphUtils'
 import './graph.css'
 
 const ALL_TYPES = NODE_TYPES.map((t) => t.key)
-
-const DEFAULT_SETTINGS = {
-  search: '',
-  dupOnly: false,
-  hideDeptLinks: false,
-  hideDocLinks: false,
-  showOrphans: true,
-  arrows: false,
-  textFade: 1.2,
-  nodeSize: 1,
-  linkWidth: 1,
-  center: 0.08,
-  repel: 90,
-  linkForce: 0.6,
-  linkDistance: 32,
-}
 
 const TYPE_LABEL = Object.fromEntries(NODE_TYPES.map((t) => [t.key, t.label]))
 

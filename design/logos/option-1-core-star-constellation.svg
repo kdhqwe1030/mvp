@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <title>Option 1 - Core Star Constellation</title>
+  <!-- 외곽 노드끼리의 성좌 연결 -->
+  <g stroke="#CBD5E1" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2 2.5">
+    <path d="M12 14 L6 32 L16 50"/>
+    <path d="M50 10 L56 34 L46 54"/>
+  </g>
+  <!-- 허브로 수렴하는 엣지 -->
+  <g stroke="#1E293B" stroke-width="1.6" stroke-linecap="round">
+    <path d="M32 32 L12 14"/>
+    <path d="M32 32 L50 10"/>
+    <path d="M32 32 L56 34"/>
+    <path d="M32 32 L46 54"/>
+    <path d="M32 32 L16 50"/>
+    <path d="M32 32 L6 32"/>
+  </g>
+  <circle cx="12" cy="14" r="3.2" fill="#1E293B"/>
+  <circle cx="50" cy="10" r="2.8" fill="#F37321"/>
+  <circle cx="56" cy="34" r="3.2" fill="#1E293B"/>
+  <circle cx="46" cy="54" r="2.6" fill="#94A3B8"/>
+  <circle cx="16" cy="50" r="3" fill="#F37321"/>
+  <circle cx="6" cy="32" r="2.2" fill="#94A3B8"/>
+  <!-- 코어 허브 -->
+  <circle cx="32" cy="32" r="10" fill="#E1002A" fill-opacity="0.12"/>
+  <circle cx="32" cy="32" r="7" fill="#E1002A"/>
+  <circle cx="32" cy="32" r="2.6" fill="#FFFFFF"/>
+</svg>

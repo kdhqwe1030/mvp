@@ -36,7 +36,8 @@ function Slider({ label, value, display, min, max, step, onChange }) {
   )
 }
 
-export default function GraphSettings({ settings, onChange, onReset, onClose, onReheat }) {
+// filterSearch: 필터 섹션의 기본 노드 검색 대신 넣을 검색 UI (지식 그래프 + 검색 화면 C안)
+export default function GraphSettings({ settings, onChange, onReset, onClose, onReheat, filterSearch }) {
   const set = (key) => (value) => onChange(key, value)
 
   return (
@@ -58,10 +59,12 @@ export default function GraphSettings({ settings, onChange, onReset, onClose, on
 
       <div className="g-settings__body">
         <Section title="필터">
-          <label className="g-search">
-            <Search size={11} />
-            <input placeholder="노드 검색..." value={settings.search} onChange={(e) => set('search')(e.target.value)} />
-          </label>
+          {filterSearch ?? (
+            <label className="g-search">
+              <Search size={11} />
+              <input placeholder="노드 검색..." value={settings.search} onChange={(e) => set('search')(e.target.value)} />
+            </label>
+          )}
           <Toggle label="중복 링크만" checked={settings.dupOnly} onChange={set('dupOnly')} />
           <Toggle label="부서 링크 숨김" checked={settings.hideDeptLinks} onChange={set('hideDeptLinks')} />
           <Toggle label="문서 링크 숨김" checked={settings.hideDocLinks} onChange={set('hideDocLinks')} />
